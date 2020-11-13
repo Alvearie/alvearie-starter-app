@@ -1,0 +1,53 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  unit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Run a multi-line script
+        env:
+          DOCKER_LOGIN: ${{ secrets.DOCKER_LOGIN }}
+        run: |
+          set -xe
+          
+          npm install --save-dev jest
+          npm test
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Run a multi-line script
+        env:
+          DOCKER_LOGIN: ${{ secrets.DOCKER_LOGIN }}
+        run: |
+          set -xe
+          
+          sudo npm install -g dockerlint
+          dockerlint -f Dockerfile
+
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Run a multi-line script
+        env:
+          DOCKER_LOGIN: ${{ secrets.DOCKER_LOGIN }}
+        run: |
+          set -xe
+          
+          echo "$DOCKER_LOGIN" | docker login us.icr.io -u "iamapikey" --password-stdin
+          docker build .
+

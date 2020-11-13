@@ -1,0 +1,22 @@
+{
+  "name": "nodejs-starter",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Basic hello world application for Node.js",
+  "author": "Rajesh Kumar Ravi <rkravi@us.ibm.com>",
+  "dependencies": {
+    "express": "*",
+    "mocha": "*",
+    "should": "*",
+    "nconf":  "*",
+    "validator": "*",
+    "jquery":"*",
+    "request-json":"*"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "jest": "^26.6.3"
+  }
+}
