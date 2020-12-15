@@ -38,6 +38,7 @@ jobs:
           wget https://get.helm.sh/helm-v3.4.2-linux-amd64.tar.gz
           tar -zxvf helm-v3.4.2-linux-amd64.tar.gz
           ls -l
+          PATH=$PATH:/tmp/linux-amd64/
           cd $WORKDIR
           helm lint chart/nodejs-starter/
   build:
