@@ -2,9 +2,6 @@ name: CI
 
 on:
   push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
 
 jobs:
   unit:
@@ -36,6 +33,13 @@ jobs:
           sudo npm install -g dockerlint
           dockerlint -f Dockerfile
 
+          WORKDIR=$pwd
+          cd /tmp/
+          wget https://get.helm.sh/helm-v3.4.2-linux-amd64.tar.gz
+          tar -zxvf helm-v3.4.2-linux-amd64.tar.gz
+          ls -l
+          cd $WORKDIR
+          helm lint chart/nodejs-starter/
   build:
     runs-on: ubuntu-latest
 
