@@ -30,16 +30,21 @@ jobs:
         run: |
           set -xe
           
+          # Docker lint install and run
           sudo npm install -g dockerlint
           dockerlint -f Dockerfile
 
+          # Helm lint
+          # set current working dir
           WORKDIR=$pwd
           cd /tmp/
+          # Download and install helm client
           wget https://get.helm.sh/helm-v3.4.2-linux-amd64.tar.gz
           tar -zxvf helm-v3.4.2-linux-amd64.tar.gz
           ls -l
           PATH=$PATH:/tmp/linux-amd64/
           cd $WORKDIR
+          # run helm lint
           helm lint chart/nodejs-starter/
   build:
     runs-on: ubuntu-latest
