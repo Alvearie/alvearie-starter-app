@@ -36,7 +36,7 @@ jobs:
 
           # Helm lint
           # set current working dir
-          WORKDIR=$pwd
+          WORKDIR=$(pwd)
           cd /tmp/
           # Download and install helm client
           wget https://get.helm.sh/helm-v3.4.2-linux-amd64.tar.gz
