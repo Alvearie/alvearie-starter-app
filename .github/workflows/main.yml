@@ -44,6 +44,8 @@ jobs:
           ls -l
           PATH=$PATH:/tmp/linux-amd64/
           cd $WORKDIR
+          helm version --client
+
           # run helm lint
           helm lint chart/nodejs-starter/
   build:
