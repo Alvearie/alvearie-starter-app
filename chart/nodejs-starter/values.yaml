@@ -20,8 +20,8 @@ image:
 service:
   name: nodejs-starter-service
   type: NodePort
-  externalPort: replace-with-override
-  internalPort: replace-with-override
+  externalPort: 8088
+  internalPort: 8088
 ingress:
   enabled: false
   # Used to create an Ingress record.
