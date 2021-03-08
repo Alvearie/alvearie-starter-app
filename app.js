@@ -19,7 +19,7 @@ var PORT = 8088;
 
 var app = express();
 app.get('/', function (req, res) {
-  res.send('Welcome to WHC DevOps with containers.<br/>This is a Toolchain Test Service for demo ' + process.env.MSG + ' 20200720-5');
+  res.send('Welcome to WHC DevOps with containers.<br/>This is a Toolchain Test Service for demo ' + process.env.MSG + '0308-1');
 });
 
 app.listen(PORT)
