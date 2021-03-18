@@ -1,5 +1,5 @@
 # Watson  Health secured image
-FROM us.icr.io/cdt-common-rns/base-images/ubi8-nodejs
+FROM registry.access.redhat.com/ubi8/ubi-minimal
 
 ARG maintainer=changeme
 LABEL maintainer=${maintainer}
