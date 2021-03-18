@@ -7,7 +7,7 @@ LABEL description="Sample node js application"
 
 USER root
 
-# Install Yum
+# Install Yum/tools
 RUN microdnf update &&\
   microdnf install wget yum &&\
   microdnf clean all
@@ -15,10 +15,6 @@ RUN microdnf update &&\
 # Install version 12 of nodejs
 RUN yum -y module reset nodejs && yum -y module enable nodejs:12 &&\
   yum -y install nodejs &&\
-  yum -y clean all
-
-# Install tools
-RUN yum -y install wget &&\
   yum -y clean all
 
 # Install the application
