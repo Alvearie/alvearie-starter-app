@@ -9,7 +9,7 @@ USER root
 
 # Install Yum
 RUN microdnf update &&\
-  microdnf install wget &&\
+  microdnf install wget yum &&\
   microdnf clean all
 
 # Install version 12 of nodejs
