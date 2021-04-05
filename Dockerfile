@@ -1,5 +1,5 @@
 # Watson  Health secured image
-FROM us.icr.io/cdt-common-rns/base-images/ubi8-nodejs
+FROM registry.access.redhat.com/ubi8/ubi-minimal
 
 ARG maintainer=changeme
 LABEL maintainer=${maintainer}
@@ -7,19 +7,15 @@ LABEL description="Sample node js application"
 
 USER root
 
-# Install Yum
+# Install Yum/tools
 RUN microdnf update &&\
-  microdnf install wget &&\
+  microdnf install wget yum &&\
   microdnf clean all
 
 # Install version 12 of nodejs
-#RUN yum -y module reset nodejs && yum -y module enable nodejs:12 &&\
-#  yum -y install nodejs &&\
-#  yum -y clean all
-
-# Install tools
-#RUN yum -y install wget &&\
-#  yum -y clean all
+RUN yum -y module reset nodejs && yum -y module enable nodejs:12 &&\
+  yum -y install nodejs &&\
+  yum -y clean all
 
 # Install the application
 ADD package.json /app/package.json
